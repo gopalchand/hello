@@ -1,8 +1,9 @@
 #include <pybind11/pybind11.h>
-#include <hello.hpp>
+#include "hello.hpp"  // Make sure this path is correct
 
 namespace py = pybind11;
 
-PYBIND__MODULE(hello_cpp, m) {
-    m.def("say_hello", &say_hello);
+// The first argument ("hello_cpp") must match the module name from CMake
+PYBIND11_MODULE(hello_cpp, m) {
+    m.def("say_hello", &say_hello, "A function that says hello");
 }
