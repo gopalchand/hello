@@ -2,6 +2,12 @@
 An example of a minimal Python "Hello, World!" project that can be installed using pip install from a GitHub repo — and uses CMake to build a native Python extension (e.g., a C++ backend). 
 This is often done when you want to integrate C++ performance into Python.
 
+## 0. Preparation
+```
+pip install --upgrade pip setuptools wheel
+pip install scikit-build cmake ninja pybind11
+```
+
 ## 1. Initialize Git (if not already done)
 ```
 git init
@@ -46,9 +52,9 @@ pip install git+https://github.com/gopalchand/hello_cmake.git
 ```
 Looking in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com
 Collecting git+https://github.com/gopalchand/hello_cmake.git
-  Cloning https://github.com/gopalchand/hello.git to <TEMPDIR>\pip-req-build-d6gnanpm
-  Running command git clone --filter=blob:none --quiet https://github.com/gopalchand/hello.git '<TEMPDIR>\pip-req-build-d6gnanpm'
-  Resolved https://github.com/gopalchand/hello.git to commit 202852a941506ee344902110252e777690da7b1c
+  Cloning https://github.com/gopalchand/hello_cmake.git to <TEMPDIR>\pip-req-build-d6gnanpm
+  Running command git clone --filter=blob:none --quiet https://github.com/gopalchand/hello_cmake.git '<TEMPDIR>\pip-req-build-d6gnanpm'
+  Resolved https://github.com/gopalchand/hello_cmake.git to commit 202852a941506ee344902110252e777690da7b1c
   Installing build dependencies ... done
   Getting requirements to build wheel ... done
   Preparing metadata (pyproject.toml) ... done
@@ -61,9 +67,17 @@ Installing collected packages: hello_cmake
 Successfully installed hello_cmake-0.1.0
 ```
 
-## 9. Execute command
+## 10. Check installation
 ```
-hello
-````
+pip list|grep hello_cmake
+hello_cmake                       0.1.0
+```
+
+## 11. Import and test
+```
+import hello
+print(hello.say_hello())
+```
+
 
 
