@@ -11,11 +11,12 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(pybind11)
 
+include_directories(${CMAKE_SOURCE_DIR}/src)
+
 pybind11_add_module(hello_cpp
     python/hello/hello_bindings.cpp
     src/hello.cpp
 )
 
-# This adds the install target
 install(TARGETS hello_cpp
         LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
