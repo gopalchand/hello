@@ -13,10 +13,10 @@ FetchContent_MakeAvailable(pybind11)
 
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
-pybind11_add_module(hello_cpp
-    python/hello/hello_bindings.cpp
+pybind11_add_module(hellothere_cpp
+    python/hellothere/hello_bindings.cpp
     src/hello.cpp
 )
 
-install(TARGETS hello_cpp
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
+install(TARGETS hellothere_cpp
+        LIBRARY DESTINATION hello)
