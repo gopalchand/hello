@@ -1,5 +1,5 @@
 #include <pybind11/pybind11.h>
-#include "hello.hpp"  // Make sure this path is correct
+#include "hello.hpp"
 
 namespace py = pybind11;
 
