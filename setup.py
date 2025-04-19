@@ -8,5 +8,5 @@ setup(
     packages=["hellothere_package"],
     package_dir={"": "python"},
     python_requires=">=3.6",
-    cmake_install_dir="python/hellothere_package"
+    cmake_install_dir="python/hellothere_package",
 )
