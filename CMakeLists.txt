@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(hello_cmake)
+project(hellothere_project)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -13,10 +13,10 @@ FetchContent_MakeAvailable(pybind11)
 
 include_directories(${CMAKE_SOURCE_DIR}/src)
 
-pybind11_add_module(hellothere_cpp
-    python/hellothere/hello_bindings.cpp
+pybind11_add_module(hellothere_module
+    python/hellothere_package/hellothere_bindings.cpp
     src/hello.cpp
 )
 
-install(TARGETS hellothere_cpp
-        LIBRARY DESTINATION hello)
+install(TARGETS hellothere_module
+        LIBRARY DESTINATION hellothere_package)

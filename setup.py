@@ -1,11 +1,11 @@
 from skbuild import setup
 
 setup(
-    name="hello_cmake",
-    version="0.1.0",
+    name="hellothere_package",
+    version="0.1",
     description="A Hello World C++ extension with CMake and pybind11",
     author="Your Name",
-    packages=["hellothere"],
+    packages=["hellothere_package"],
     package_dir={"": "python"},
     python_requires=">=3.6",
 )
