@@ -1,4 +1,6 @@
-# hello_cmake
+![Python Tests](https://github.com/gopalchand/hellothere_project/actions/workflows/python-tests.yml/badge.svg)
+
+# hellothere_project
 An example of a minimal Python "Hello, World!" project that can be installed using pip install from a GitHub repo — and uses CMake to build a native Python extension (e.g., a C++ backend).
 This is often done when you want to integrate C++ performance into Python.
 
@@ -143,6 +145,36 @@ hellothere_package                0.1
 import hellothere_package
 print(hellothere_package.say_hello())
 ```
+
+# 12. TL;DR
+```
+pip install git+https://github.com/gopalchand/hellothere_package.git
+```
+and then run the following in python:
+```
+import hellothere_package
+print(hellothere_package.say_hello())
+```
+You should see "Hello from C++!"
+
+# 13. Testing with Pytest
+clone the repo
+```
+pip clone https://github.com/gopalchand/hellothere_package
+```
+Make sure pytest is installed
+```
+pip install pytest
+```
+and then run pytest in the root folder for the cloned repo
+
+# 14. GitHub testing
+The following test file is used for workflow based testing in GitHub:
+```
+.github/workflows/python-tests.yml
+```
+
+
 
 Thanks to [ChatGPT](https://chat.openai.com) for guidance on setting up this CMake + pybind11 + scikit-build Python package.
 
