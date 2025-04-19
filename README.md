@@ -5,6 +5,7 @@ This is often done when you want to integrate C++ performance into Python.
 Testing with Windows 11. Below are instructions of how this repo was set up including information/reminders for how to get started with with GitHub and repos.
 
 Folder Structure:
+```
 hellothere_project/
 ├── CMakeLists.txt
 ├── pyproject.toml
@@ -16,6 +17,7 @@ hellothere_project/
 │   └── hellothere_package/
 │       ├── __init__.py
 │       └── hellothere_bindings.cpp
+```
 
 ## 0. Preparation
 Optional installation of packages
@@ -82,12 +84,28 @@ The pip install git+https://github.com/user/repo.git usually does the following:
 git clone https://github.com/user/repo.git <local_folder>
 ```
 cd into the <local_folder>
-if there's a pyproject.toml present then install everything in the requires=[...] part and then call setuptools.build_meta which is patched by scikit-build. scikit_build runs CMake and Ninja to compile C++ code and install the .pyd and __init__.py (from .<module> import <function>) into the Python package via install() in CMake run from scikit-build e.g. for Python 3.10 under Windows x64:
-
+if there's a pyproject.toml present then install everything in the requires=[...] part and then call setuptools.build_meta which is patched by scikit-build. scikit_build runs CMake and Ninja to compile C++ code:
+```
+cmake -S . -B _skbuild/<platform>-<python-version>/cmake-build \
+  -DCMAKE_INSTALL_PREFIX=_skbuild/<platform>-<python-version>/cmake-install \
+  -DPYTHON_EXECUTABLE=<path-to-python> \
+  -DCMAKE_BUILD_TYPE=Release
+  ```
+The build step is as follows using Ninja or MSVC/Make:
+```
+cmake --build _skbuild/<...>/cmake-build --config Release -- -v
+```
+The install step is as follows (installing into _skbuild/<...>/cmake-install/ using paths in CMakeLists.txt)
+```
+cmake --install _skbuild/<...>/cmake-build --config Release
+```
+The .pyd (Python equivalent of a DLL) and __init__.py (containing "from .<module> import <function>") are insalled as follows for Windows, for example:
+```
 %LOCALAPPDATA%\Programs\Python\Python310\Lib\site-packages\
 └── hellothere_package\
     ├── __init__.py
     └── hellothere_module.cp310-win_amd64.pyd
+```
 
 This will allow import hellothere_package to work along with calling hellothere_package.say_hello() (<module>.<function>)
 
@@ -96,7 +114,7 @@ In addition setuptools.build_meta looks at setup.py for information about the pa
 Example output:
 ```
 pip install git+https://github.com/gopalchand/hellothere_project.git
-Looking in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com
+Looking in indexes: ...
 Collecting git+https://github.com/gopalchand/hellothere_project.git
   Cloning https://github.com/gopalchand/hellothere_project.git to %TEMP%\pip-req-build-d3woeokv
   Running command git clone --filter=blob:none --quiet https://github.com/gopalchand/hellothere_project.git '%TEMP%\pip-req-build-d3woeokv'
