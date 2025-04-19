@@ -1,0 +1,9 @@
+Metadata-Version: 2.4
+Name: hellothere_package
+Version: 0.1
+Summary: A Hello World C++ extension with CMake and pybind11
+Author: Your Name
+Requires-Python: >=3.6
+Dynamic: author
+Dynamic: requires-python
+Dynamic: summary

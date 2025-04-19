@@ -18,8 +18,5 @@ pybind11_add_module(hellothere_module
     src/hello.cpp
 )
 
-#install(TARGETS hellothere_module
-#        LIBRARY DESTINATION hellothere_package)
-
 install(TARGETS hellothere_module
-        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}/hellothere_package)
+        LIBRARY DESTINATION .)
