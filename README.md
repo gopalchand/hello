@@ -146,7 +146,7 @@ import hellothere_package
 print(hellothere_package.say_hello())
 ```
 
-# 12. TL;DR
+## 12. TL;DR
 ```
 pip install git+https://github.com/gopalchand/hellothere_package.git
 ```
@@ -157,7 +157,7 @@ print(hellothere_package.say_hello())
 ```
 You should see "Hello from C++!"
 
-# 13. Testing with Pytest
+## 13. Testing with Pytest
 clone the repo
 ```
 pip clone https://github.com/gopalchand/hellothere_package
@@ -168,13 +168,11 @@ pip install pytest
 ```
 and then run pytest in the root folder for the cloned repo
 
-# 14. GitHub testing
+## 14. GitHub testing
 The following test file is used for workflow based testing in GitHub:
 ```
 .github/workflows/python-tests.yml
 ```
-
-
 
 Thanks to [ChatGPT](https://chat.openai.com) for guidance on setting up this CMake + pybind11 + scikit-build Python package.
 
